@@ -31,5 +31,8 @@ var conditionForMobile = function () {
 ## How to use
 You need to add **active-eligible** class on **step-icon** with server-side rendering so that the plugin should understand what all steps are done and are eligible for animation. Please do not put any class on the first element. It is handled by the plugin itself.
 
-#### How many steps can I add ?
+#### **How many steps can I add** ?
 You can put n number of steps in your code.
+
+#### **How many instances can I use on a single page** ?
+You can use n number of instance on a single page using different parent selectors.
