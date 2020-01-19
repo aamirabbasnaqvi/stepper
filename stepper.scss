@@ -10,6 +10,9 @@ $iconSize: 50px;
 $progressbarThickness: 4px;
 $iconFontSize: 20px;
 $heightOfStepperForMobile: 600px; // this height is configurable on the basis of your device and need.
+$stepperActivationColor: green;
+$stepperButtonsBaseColor: gray;
+$iconTextColor: white;
 
 .stepper {
     position: relative;
@@ -38,7 +41,7 @@ $heightOfStepperForMobile: 600px; // this height is configurable on the basis of
 
         .step-progress {
             min-width: 10%;
-            background-color: green;
+            background-color: $stepperActivationColor;
             height: $progressbarThickness;
             border: none;
             margin: 0;
@@ -76,15 +79,15 @@ $heightOfStepperForMobile: 600px; // this height is configurable on the basis of
             width: $iconSize;
             height: $iconSize;
             font-size: $iconFontSize;
-            background-color: gray;
+            background-color: $stepperButtonsBaseColor;
             border-radius: 50%;
-            color: #fff;
+            color: $iconTextColor;
             border: none;
             transition: .3s background-color ease-in;
 
             &:first-child,
             &.active {
-                background-color: green;
+                background-color: $stepperActivationColor;
             }
         }
     }
