@@ -35,7 +35,7 @@ You need to add **active-eligible** class on **step-icon** with server-side rend
 You can put n number of steps in your code.
 
 #### **How many instances can I use on a single page** ?
-You can use n number of instance on a single page using different parent selectors.
+You can use n number of instances on a single page using different parent selectors.
 
 #### **Where can I see a working example** ?
 https://codepen.io/aamirabbasnaqvi/pen/MWYPxBz
