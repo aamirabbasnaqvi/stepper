@@ -1,0 +1,91 @@
+@mixin mobile() {
+    @media screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+//
+
+$iconSize: 50px;
+$progressbarThickness: 4px;
+$iconFontSize: 20px;
+$heightOfStepperForMobile: 600px; // this height is configurable on the basis of your device and need.
+
+.stepper {
+    position: relative;
+
+    @include mobile() {
+        display: inline-block;
+    }
+
+    .progress-wrapper {
+        top: 50%;
+        display: block;
+        position: absolute;
+        height: $progressbarThickness;
+        transform: translateY(-50%);
+        left: $iconSize/2;
+        right: $iconSize/2;
+
+        @include mobile() {
+            top: $iconSize/2;
+            width: $progressbarThickness;
+            height: auto;
+            transform: translateX(-50%);
+            left: 50%;
+            bottom: $iconSize/2;
+        }
+
+        .step-progress {
+            min-width: 10%;
+            background-color: green;
+            height: $progressbarThickness;
+            border: none;
+            margin: 0;
+            display: inline-block;
+            transition-timing-function: ease-in;
+            transition-property: width;
+            border-radius: 0 2px 2px 0;
+            position: absolute;
+            width: 10%;
+
+            @include mobile() {
+                min-height: 10%;
+                height: 10%;
+                width: $progressbarThickness;
+                transition-property: height;
+                border-radius: 0 0 $progressbarThickness/2 $progressbarThickness/2;
+            }
+        }
+    }
+
+    .steps-box {
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+
+        @include mobile() {
+            min-height: $heightOfStepperForMobile;
+            display: inline-flex;
+            flex-direction: column;
+        }
+
+        .step-icon {
+            display: inline-block;
+            position: relative;
+            width: $iconSize;
+            height: $iconSize;
+            font-size: $iconFontSize;
+            background-color: gray;
+            border-radius: 50%;
+            color: #fff;
+            border: none;
+            transition: .3s background-color ease-in;
+
+            &:first-child,
+            &.active {
+                background-color: green;
+            }
+        }
+    }
+}
