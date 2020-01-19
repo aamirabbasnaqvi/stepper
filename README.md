@@ -1,7 +1,7 @@
 # stepper
 A CSS and JavaScript based progress-bar for multi step forms
 
-**Note**: Please configure these file as per your own bundler.
+**Note**: Please configure these files as per your own bundler.
 
 ## Initializing the Stepper plugin
 ``` Javascript
