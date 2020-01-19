@@ -1,7 +1,7 @@
 # stepper
 A CSS and JavaScript based progress-bar for multi step forms
 
-**Note**: Please configure these file as per your own bundler.
+**Note**: Please configure these files as per your own bundler.
 
 ## Initializing the Stepper plugin
 ``` Javascript
@@ -28,3 +28,14 @@ var conditionForMobile = function () {
     }
 }
 ```
+## How to use
+You need to add **active-eligible** class on **step-icon** with server-side rendering so that the plugin should understand what all steps are done and are eligible for animation. Please do not put any class on the first element. It is handled by the plugin itself.
+
+#### **How many steps can I add** ?
+You can put n number of steps in your code.
+
+#### **How many instances can I use on a single page** ?
+You can use n number of instances on a single page using different parent selectors.
+
+#### **Where can I see a working example** ?
+https://codepen.io/aamirabbasnaqvi/pen/MWYPxBz
