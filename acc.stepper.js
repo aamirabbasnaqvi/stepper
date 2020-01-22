@@ -3,7 +3,6 @@ var ACC = ACC || {};
 ACC.Stepper = (function (config) {
 
     "use strict";
-
     class Stepper {
         constructor(config) {
             this.speed = config.speed || "";
@@ -28,7 +27,6 @@ ACC.Stepper = (function (config) {
         let currentCount = 1,
             actualSpeed = (excudedPercentile * this.speed + this.speed);
 
-
         if (currentCount > activeStepsCount) {
             return;
         }
@@ -41,7 +39,6 @@ ACC.Stepper = (function (config) {
             }
             this.$stepProgress.style.transitionDuration = `${(this.speed / 1000) * activeStepsCount}s`;
         }, 1);
-
 
         const animateSteps = () => {
 
