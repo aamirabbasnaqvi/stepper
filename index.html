@@ -20,6 +20,61 @@
                 <button class="step-icon active-eligible">3</button>
             </div>
         </div>
+
+        <div class="stepper homepage-stepper2">
+            <div class="progress-wrapper">
+                <hr class="step-progress" />
+            </div>
+            <div class="steps-box">
+                <button class="step-icon">1</button>
+                <button class="step-icon active-eligible">2</button>
+                <button class="step-icon active-eligible">3</button>
+            </div>
+        </div>
+
+        <div class="stepper homepage-stepper3">
+            <div class="progress-wrapper">
+                <hr class="step-progress" />
+            </div>
+            <div class="steps-box">
+                <button class="step-icon">1</button>
+                <button class="step-icon active-eligible">2</button>
+                <button class="step-icon active-eligible">3</button>
+            </div>
+        </div>
+
+        <div class="stepper homepage-stepper4">
+            <div class="progress-wrapper">
+                <hr class="step-progress" />
+            </div>
+            <div class="steps-box">
+                <button class="step-icon">1</button>
+                <button class="step-icon active-eligible">2</button>
+                <button class="step-icon active-eligible">3</button>
+            </div>
+        </div>
+
+        <div class="stepper my-stepper">
+            <div class="progress-wrapper">
+                <hr class="step-progress" />
+            </div>
+            <div class="steps-box">
+                <button class="step-icon">1</button>
+                <button class="step-icon active-eligible">2</button>
+                <button class="step-icon active-eligible">3</button>
+            </div>
+        </div>
+
+        <div class="stepper my-stepper">
+            <div class="progress-wrapper">
+                <hr class="step-progress" />
+            </div>
+            <div class="steps-box">
+                <button class="step-icon">1</button>
+                <button class="step-icon active-eligible">2</button>
+                <button class="step-icon active-eligible">3</button>
+            </div>
+        </div>
     </div>
 </body>
 
@@ -29,11 +84,43 @@
         return window.outerWidth < 768;
     };
 
-    var stepperInstance = ACC.Stepper({
-        selector: ".homepage-stepper",
+    // Initialize using  multiple elements
+
+    var conditionForMobile = function () {
+        return window.outerWidth < 768;
+    };
+
+    var stepperInstance = ACC.Stepper([{
+        selector: document.getElementsByClassName("homepage-stepper")[0],
         speed: 1000,
         conditionForMobile: conditionForMobile
+    }, {
+        selector: document.getElementsByClassName("homepage-stepper2")[0],
+        speed: 3000,
+        conditionForMobile: conditionForMobile
+    }, {
+        selector: document.getElementsByClassName("homepage-stepper3")[0],
+        speed: 5000,
+        conditionForMobile: conditionForMobile
+    }]);
+
+    // Initialize using a single element
+
+    var stepperInstance = ACC.Stepper({
+        selector: document.getElementsByClassName("homepage-stepper4")[0],
+        speed: 500,
+        conditionForMobile: conditionForMobile
     });
+
+    // single config with multiple elements
+
+    var stepperInstance = ACC.Stepper({
+        selector: document.getElementsByClassName("my-stepper"),
+        speed: 500,
+        conditionForMobile: conditionForMobile
+    });
+
+
 
 </script>
 

@@ -7,7 +7,7 @@ ACC.Stepper = (function (config) {
     class Stepper {
         constructor(config) {
             this.speed = config.speed || "";
-            this.$stepper = document.querySelector(config.selector);
+            this.$stepper = config.selector;
             this.$stepProgress = this.$stepper.querySelector(".step-progress");
             this.$totalSteps = this.$stepper.querySelectorAll(".step-icon");
             this.$allActiveSteps = this.$stepper.querySelectorAll(".step-icon.active-eligible");
@@ -25,6 +25,14 @@ ACC.Stepper = (function (config) {
             completionPercentage = (activeStepsCount / totalStepsCount) * 100,
             excudedPercentile = (10 * totalStepsCount) / 100;
 
+        let currentCount = 1,
+            actualSpeed = (excudedPercentile * this.speed + this.speed);
+
+
+        if (currentCount > activeStepsCount) {
+            return;
+        }
+
         setTimeout(() => {
             if (typeof (conditionForMobile) === "function" && conditionForMobile()) {
                 this.$stepProgress.style.height = `${completionPercentage}%`;
@@ -34,8 +42,6 @@ ACC.Stepper = (function (config) {
             this.$stepProgress.style.transitionDuration = `${(this.speed / 1000) * activeStepsCount}s`;
         }, 1);
 
-        let currentCount = 1,
-            actualSpeed = (excudedPercentile * this.speed + this.speed);
 
         const animateSteps = () => {
 
@@ -56,8 +62,53 @@ ACC.Stepper = (function (config) {
         animateSteps();
     }
 
+    function init(config) {
+
+        if (config.constructor === Array) {
+
+            const stepperInstances = [];
+
+            config.forEach((config) => {
+
+                if (config.selector) {
+                    let thisConfig = Object.assign({}, config);
+                    thisConfig.selector = config.selector;
+                    stepperInstances.push(new Stepper(thisConfig));
+                } else {
+                    console.warn("Hey, you should pass a proper selector");
+                }
+            });
+
+            return stepperInstances;
+
+        } else if (config.constructor === Object) {
+
+            if (!config.selector) {
+                console.warn("Hey, you should pass a proper selector");
+                return;
+            }
+
+            const stepperInstances = [];
+
+            if (config.selector.length > 1) {
+
+                Array.from(config.selector).forEach((thisSelector) => {
+                    let thisConfig = Object.assign({}, config);
+                    thisConfig.selector = thisSelector;
+                    stepperInstances.push(new Stepper(thisConfig));
+                });
+                return stepperInstances;
+            }
+
+            if (config.selector) {
+                return new Stepper(config);
+            }
+        }
+
+    }
+
     return function (config) {
-        return new Stepper(config);
+        return init(config);
     }
 
 })();
