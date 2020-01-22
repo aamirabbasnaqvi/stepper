@@ -12,6 +12,41 @@ var stepperInstance = ACC.Stepper({
 });
 ```
 
+### Initialize using  multiple elements
+```
+var stepperInstance = ACC.Stepper([{
+    selector: document.getElementsByClassName("homepage-stepper")[0],
+    speed: 1000,
+    conditionForMobile: conditionForMobile
+}, {
+    selector: document.getElementsByClassName("homepage-stepper2")[0],
+    speed: 3000,
+    conditionForMobile: conditionForMobile
+}, {
+    selector: document.getElementsByClassName("homepage-stepper3")[0],
+    speed: 5000,
+    conditionForMobile: conditionForMobile
+}]);
+```
+
+### Initialize using a single element
+```
+var stepperInstance = ACC.Stepper({
+    selector: document.getElementsByClassName("homepage-stepper4")[0],
+    speed: 500,
+    conditionForMobile: conditionForMobile
+});
+```
+
+### Initialize using one config with with multiple elements
+```
+var stepperInstance = ACC.Stepper({
+    selector: document.getElementsByClassName("my-stepper"),
+    speed: 500,
+    conditionForMobile: conditionForMobile
+});
+```
+## Configuration properties
 * **Speed** : The timeframe in which the animation completes.
 * **Selector**: The selector reference for your stepper element.
 * **Condition** for mobile: This is a configurable condition for mobile. You can change the threshold width of the device. You can also put a static condition over here such as 'document.documentElement.classList.contains("touch")' for cases where Modernizr puts a touch class on HTML node. Changing this will also need a change in @mobile mixin in SCSS for sync in conditions.
